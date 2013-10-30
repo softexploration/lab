@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="3.1"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+
+	<enterprise-beans>
+		<session>
+			<ejb-name>SLEJBMoneyTransferService</ejb-name>
+			<env-entry>
+				<env-entry-name>initialBalance</env-entry-name>
+				<env-entry-type>java.lang.Double</env-entry-type>
+				<env-entry-value>10000.12</env-entry-value>
+			</env-entry>
+		</session>
+		<session>
+			<ejb-name>SFEJBMoneyTransferService</ejb-name>
+			<env-entry>
+				<env-entry-name>initialBalance</env-entry-name>
+				<env-entry-type>java.lang.Double</env-entry-type>
+				<env-entry-value>2000.</env-entry-value>
+			</env-entry>
+		</session>
+		<session>
+			<ejb-name>SingletonEJBMoneyTransferService</ejb-name>
+			<env-entry>
+				<env-entry-name>initialBalance</env-entry-name>
+				<env-entry-type>java.lang.Double</env-entry-type>
+				<env-entry-value>6000.</env-entry-value>
+			</env-entry>
+		</session>
+	</enterprise-beans>
+
+</ejb-jar>

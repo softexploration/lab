@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.softexploration.lab.ejbspring</groupId>
+	<artifactId>com.softexploration.lab.ejbspring.transfer.app</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+	<parent>
+		<groupId>com.softexploration.lab.ejbspring</groupId>
+		<artifactId>com.softexploration.lab.ejbspring.transfer.build</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../com.softexploration.lab.ejbspring.transfer.build/pom.xml</relativePath>
+	</parent>
+
+	<name>com.softexploration.lab.ejbspring.transfer.app</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.facade.ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.facade.spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.service.ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.service.spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.softexploration.lab.ejbspring</groupId>
+			<artifactId>com.softexploration.lab.ejbspring.transfer.webapp</artifactId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<applicationName>com.softexploration.lab.ejbspring.transfer</applicationName>
+					<defaultLibBundleDir>/lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>com.softexploration.lab.ejbspring</groupId>
+							<artifactId>com.softexploration.lab.ejbspring.transfer.facade.ejb</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>com.softexploration.lab.ejbspring</groupId>
+							<artifactId>com.softexploration.lab.ejbspring.transfer.service.ejb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>com.softexploration.lab.ejbspring</groupId>
+							<artifactId>com.softexploration.lab.ejbspring.transfer.webapp</artifactId>
+							<contextRoot>webapp</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<!-- facades -->
+	<bean id="spring-slejbMoneyTransferFacade"
+		class="com.softexploration.lab.ejbspring.transfer.facade.spring.SpringMoneyTransferFacade">
+		<property name="moneyTransferService" ref="sLEJBMoneyTransferService" />
+	</bean>
+	
+	<bean id="spring-sfejbMoneyTransferFacade"
+		class="com.softexploration.lab.ejbspring.transfer.facade.spring.SpringMoneyTransferFacade">
+		<property name="moneyTransferService" ref="sFEJBMoneyTransferService" />
+	</bean>
+	
+	<bean id="spring-singletonejbMoneyTransferFacade"
+		class="com.softexploration.lab.ejbspring.transfer.facade.spring.SpringMoneyTransferFacade">
+		<property name="moneyTransferService" ref="singletonEJBMoneyTransferService" />
+	</bean>
+	
+	<!-- services --> 
+	<jee:local-slsb id="sLEJBMoneyTransferService"
+		business-interface="com.softexploration.lab.ejbspring.transfer.service.MoneyTransferService"
+		jndi-name="ejb/SLEJBMoneyTransferService" resource-ref="true" lookup-home-on-startup="true" />
+		
+	<bean id="sFEJBMoneyTransferService" class="org.springframework.jndi.JndiObjectFactoryBean">
+	   <property name="jndiName" value="ejb/SFEJBMoneyTransferService" />
+	   <property name="resourceRef" value="true" />
+	</bean>
+
+	<jee:jndi-lookup id="singletonEJBMoneyTransferService" 
+		jndi-name="ejb/SingletonEJBMoneyTransferService" resource-ref="true" />
+			
+	<!-- equivalent definition of sLEJBMoneyTransferService:  
+	<bean id="sLEJBMoneyTransferService"
+		class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="ejb/SLEJBMoneyTransferService" />
+		<property name="businessInterface"
+			value="com.softexploration.lab.ejbspring.transfer.service.MoneyTransferService" />
+		<property name="resourceRef" value="true" />
+	</bean> 
+	-->
+
+</beans>

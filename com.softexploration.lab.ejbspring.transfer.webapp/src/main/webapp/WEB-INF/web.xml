@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/SLEJBMoneyTransferService</ejb-ref-name>
+		<local>com.softexploration.lab.ejbspring.transfer.service.MoneyTransferService</local>
+		<ejb-link>SLEJBMoneyTransferService</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/SFEJBMoneyTransferService</ejb-ref-name>
+		<local>com.softexploration.lab.ejbspring.transfer.service.MoneyTransferService</local>
+		<ejb-link>SFEJBMoneyTransferService</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/SingletonEJBMoneyTransferService</ejb-ref-name>
+		<local>com.softexploration.lab.ejbspring.transfer.service.MoneyTransferService</local>
+		<ejb-link>SingletonEJBMoneyTransferService</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/EJBMoneyTransferFacade</ejb-ref-name>
+		<local>com.softexploration.lab.ejbspring.transfer.facade.MoneyTransferFacade</local>
+	</ejb-local-ref>
+	
+	<servlet>
+		<servlet-name>MoneyTransferServlet</servlet-name>
+		<servlet-class>com.softexploration.lab.ejbspring.transfer.webapp.servlet.MoneyTransferServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MoneyTransferServlet</servlet-name>
+		<url-pattern>/MoneyTransferServlet</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>locatorFactorySelector</param-name>
+		<param-value>classpath:beanRefContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>parentContextKey</param-name>
+		<param-value>app.context</param-value>
+	</context-param>
+
+</web-app>
