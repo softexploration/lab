@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.softexploration.lab.transfer</groupId>
+	<artifactId>com.softexploration.lab.transfer.money.build</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>com.softexploration.lab.transfer.money.build</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		<javaee.api.version>6.0</javaee.api.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.softexploration.lab.transfer</groupId>
+				<artifactId>com.softexploration.lab.transfer.money.service</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.softexploration.lab.transfer</groupId>
+				<artifactId>com.softexploration.lab.transfer.money.listener</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.softexploration.lab.transfer</groupId>
+				<artifactId>com.softexploration.lab.transfer.money.resource</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>rar</type>
+			</dependency>
+			<dependency>
+				<groupId>com.softexploration.lab.transfer</groupId>
+				<artifactId>com.softexploration.lab.transfer.money.app</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>ear</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+		<module>../com.softexploration.lab.transfer.money.app</module>
+		<module>../com.softexploration.lab.transfer.money.listener</module>
+		<module>../com.softexploration.lab.transfer.money.service</module>
+		<module>../com.softexploration.lab.transfer.money.resource</module>
+	</modules>
+
+</project>
