@@ -21,7 +21,7 @@ import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 public class EJBMoneyTransferFacade implements MoneyTransferFacade {
 
-	@Autowired()
+	@Autowired
 	private MoneyTransferService moneyTransferService;
 
 	public MoneyTransferResponse transfer(MoneyTransferRequest request) {
